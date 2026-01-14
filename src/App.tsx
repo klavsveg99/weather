@@ -4,12 +4,17 @@ import WeatherDisplay from './components/WeatherDisplay'
 import SearchBar from './components/SearchBar'
 import { getWeatherData } from './services/weatherApi'
 import type { WeatherData } from './types/weather'
+import type { Language } from './utils/i18n'
+import { translations } from './utils/i18n'
 
 function App() {
   const [weather, setWeather] = useState<WeatherData | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [searchCity, setSearchCity] = useState('New York')
+  const [language, setLanguage] = useState<Language>('en')
+
+  const t = translations[language]
 
   useEffect(() => {
     fetchWeather(searchCity)
@@ -23,7 +28,7 @@ function App() {
       setWeather(data)
       setSearchCity(city)
     } catch (err) {
-      setError('Failed to fetch weather data. Please try again.')
+      setError(t.error)
       console.error(err)
     } finally {
       setLoading(false)
@@ -36,14 +41,23 @@ function App() {
     }
   }
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'lv' : 'en')
+  }
+
   return (
     <div className="app">
       <div className="container">
-        <h1>Weather App</h1>
-        <SearchBar onSearch={handleSearch} />
-        {loading && <div className="loading">Loading...</div>}
+        <div className="header">
+          <h1>{t.title}</h1>
+          <button className="language-toggle" onClick={toggleLanguage}>
+            {language === 'en' ? 'LV' : 'EN'}
+          </button>
+        </div>
+        <SearchBar onSearch={handleSearch} language={language} />
+        {loading && <div className="loading">{t.loading}</div>}
         {error && <div className="error">{error}</div>}
-        {weather && <WeatherDisplay weather={weather} />}
+        {weather && <WeatherDisplay weather={weather} language={language} />}
       </div>
     </div>
   )

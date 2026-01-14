@@ -1,11 +1,16 @@
 import type { WeatherData } from '../types/weather'
+import type { Language } from '../utils/i18n'
+import { translations } from '../utils/i18n'
 import { getWeatherIcon } from '../utils/weatherCodes'
 
 type WeatherDisplayProps = {
   weather: WeatherData
+  language: Language
 }
 
-export default function WeatherDisplay({ weather }: WeatherDisplayProps) {
+export default function WeatherDisplay({ weather, language }: WeatherDisplayProps) {
+  const t = translations[language]
+
   const formatTime = (timeString: string) => {
     const date = new Date(timeString)
     return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
@@ -16,7 +21,7 @@ export default function WeatherDisplay({ weather }: WeatherDisplayProps) {
       <div className="location">
         <h2>{weather.city}, {weather.country}</h2>
         <p className="coordinates">
-          {weather.latitude.toFixed(2)}° N, {Math.abs(weather.longitude).toFixed(2)}° W
+          {Math.abs(weather.latitude).toFixed(2)}° {weather.latitude >= 0 ? 'N' : 'S'}, {Math.abs(weather.longitude).toFixed(2)}° {weather.longitude >= 0 ? 'E' : 'W'}
         </p>
       </div>
 
@@ -24,39 +29,39 @@ export default function WeatherDisplay({ weather }: WeatherDisplayProps) {
         <div className="temperature-section">
           <div className="icon">{getWeatherIcon(weather.weatherCode)}</div>
           <div className="temperature">
-            <div className="temp">{weather.temperature}°F</div>
+            <div className="temp">{weather.temperature}°C</div>
             <div className="description">{weather.weatherDescription}</div>
-            <div className="feels-like">Feels like {weather.feelsLike}°F</div>
+            <div className="feels-like">{t.feelsLike} {weather.feelsLike}°C</div>
           </div>
         </div>
 
         <div className="details-grid">
           <div className="detail-card">
-            <div className="detail-label">Humidity</div>
+            <div className="detail-label">{t.humidity}</div>
             <div className="detail-value">{weather.humidity}%</div>
           </div>
           <div className="detail-card">
-            <div className="detail-label">Wind Speed</div>
-            <div className="detail-value">{weather.windSpeed} mph</div>
+            <div className="detail-label">{t.windSpeed}</div>
+            <div className="detail-value">{weather.windSpeed} km/h</div>
           </div>
           <div className="detail-card">
-            <div className="detail-label">Visibility</div>
+            <div className="detail-label">{t.visibility}</div>
             <div className="detail-value">{weather.visibility} km</div>
           </div>
           <div className="detail-card">
-            <div className="detail-label">Precipitation</div>
+            <div className="detail-label">{t.precipitation}</div>
             <div className="detail-value">{weather.precipitation} mm</div>
           </div>
           <div className="detail-card">
-            <div className="detail-label">UV Index</div>
+            <div className="detail-label">{t.uvIndex}</div>
             <div className="detail-value">{weather.uvIndex}</div>
           </div>
           <div className="detail-card">
-            <div className="detail-label">Sunrise</div>
+            <div className="detail-label">{t.sunrise}</div>
             <div className="detail-value">{formatTime(weather.sunrise)}</div>
           </div>
           <div className="detail-card">
-            <div className="detail-label">Sunset</div>
+            <div className="detail-label">{t.sunset}</div>
             <div className="detail-value">{formatTime(weather.sunset)}</div>
           </div>
         </div>

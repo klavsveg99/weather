@@ -39,8 +39,8 @@ export async function getWeatherData(city: string): Promise<WeatherData> {
       current: 'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation,weather_code,visibility,uv_index',
       daily: 'sunrise,sunset',
       timezone: 'auto',
-      temperature_unit: 'fahrenheit',
-      wind_speed_unit: 'mph'
+      temperature_unit: 'celsius',
+      wind_speed_unit: 'kmh'
     })
 
     const response = await fetch(`${WEATHER_API}?${params}`)
