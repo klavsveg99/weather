@@ -14,7 +14,10 @@ export const translations = {
     uvIndex: 'UV Index',
     sunrise: 'Sunrise',
     sunset: 'Sunset',
-    feelsLike: 'Feels like'
+    feelsLike: 'Feels like',
+    forecast: '7-Day Forecast',
+    localTime: 'Local Time',
+    dayLength: 'Day Length'
   },
   lv: {
     title: 'Laika Prognoze',
@@ -27,8 +30,11 @@ export const translations = {
     visibility: 'Redzamība',
     precipitation: 'Nokrišņi',
     uvIndex: 'UV indekss',
-    sunrise: 'Saulriets',
+    sunrise: 'Saule aust',
     sunset: 'Saule noriet',
-    feelsLike: 'Jūtas kā'
+    feelsLike: 'Jūtas kā',
+    forecast: '7 dienu prognoze',
+    localTime: 'Lokālais laiks',
+    dayLength: 'Dienas garums'
   }
 }

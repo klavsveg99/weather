@@ -1,11 +1,11 @@
 .app {
   width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #000000 0%, #ffffff 100%);
   padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 0px;
 }
 
 .container {
@@ -35,7 +35,7 @@
 
 .language-toggle {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #000000;
   color: white;
   border: none;
   border-radius: 10px;
@@ -48,7 +48,7 @@
 
 .language-toggle:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .search-bar {
@@ -68,12 +68,12 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #000000;
 }
 
 .search-button {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #000000;
   color: white;
   border: none;
   border-radius: 10px;
@@ -85,7 +85,7 @@
 
 .search-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .loading,
@@ -150,7 +150,7 @@
   gap: 2rem;
   margin-bottom: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #333333 0%, #666666 100%);
   border-radius: 15px;
   color: white;
   text-align: center;
@@ -219,14 +219,205 @@
   font-weight: 600;
 }
 
+.forecast-display {
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.forecast-title {
+  color: #333;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+}
+
+.forecast-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.forecast-nav {
+  background: #000000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+
+.forecast-nav:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-cards {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.forecast-card {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  min-width: 140px;
+}
+
+.forecast-date {
+  color: #666;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.forecast-icon {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+}
+
+.forecast-temps {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.forecast-temp-max {
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.forecast-temp-min {
+  color: #999;
+  font-size: 1.3rem;
+}
+
+.forecast-desc {
+  color: #666;
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-details {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.7rem;
+  border-top: 1px solid #ddd;
+  padding-top: 0.75rem;
+}
+
+.forecast-detail-item {
+  flex: 1;
+}
+
+.forecast-detail-label {
+  color: #999;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.forecast-detail-value {
+  color: #333;
+  font-weight: 600;
+}
+
+.forecast-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.forecast-dot {
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 0;
+}
+
+.forecast-dot.active {
+  background: #333;
+}
+
+@media (max-width: 750px) {
+  .forecast-card {
+    min-width: 110px;
+    padding: 0.75rem;
+  }
+
+  .forecast-icon {
+    font-size: 2rem;
+  }
+
+  .forecast-temp-max,
+  .forecast-temp-min {
+    font-size: 1.1rem;
+  }
+
+  .forecast-date {
+    font-size: 0.75rem;
+  }
+
+  .forecast-desc {
+    font-size: 0.65rem;
+    min-height: 2rem;
+  }
+
+  .forecast-details {
+    font-size: 0.65rem;
+  }
+
+  .forecast-detail-label {
+    font-size: 0.6rem;
+  }
+
+  .forecast-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .forecast-container {
+    gap: 0.5rem;
+  }
+}
+
 @media (max-width: 600px) {
   .app {
-    padding: 1rem;
+    padding: 0;
     border-radius: 0;
+    width: 100vw;
   }
 
   .container {
     padding: 1.5rem;
+    max-width: 100%;
+    border-radius: 0;
   }
 
   .header {
@@ -250,15 +441,97 @@
   .temp {
     font-size: 2rem;
   }
+
+  .forecast-cards {
+    gap: 0.75rem;
+    overflow: visible;
+  }
+
+  .forecast-card {
+    min-width: calc(100% - 40px);
+    flex-shrink: 0;
+    opacity: 0.4;
+    padding: 0.6rem;
+    transition: opacity 0.3s;
+  }
+
+  .forecast-card:first-child {
+    margin-left: 20px;
+  }
+
+  .forecast-card:last-child {
+    margin-right: 20px;
+  }
+
+  .forecast-card[class*="forecast-card"] {
+    opacity: 0.4;
+  }
+
+  .forecast-cards > div:first-child {
+    opacity: 1;
+  }
+
+  .forecast-icon {
+    font-size: 1.8rem;
+    margin: 0.3rem 0;
+  }
+
+  .forecast-temps {
+    gap: 0.4rem;
+    margin: 0.5rem 0;
+  }
+
+  .forecast-temp-max,
+  .forecast-temp-min {
+    font-size: 0.95rem;
+  }
+
+  .forecast-date {
+    font-size: 0.7rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .forecast-desc {
+    font-size: 0.6rem;
+    min-height: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .forecast-details {
+    font-size: 0.6rem;
+    padding-top: 0.5rem;
+  }
+
+  .forecast-detail-label {
+    font-size: 0.55rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .forecast-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .forecast-container {
+    gap: 0.3rem;
+  }
+
+  .forecast-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 @media (max-width: 400px) {
   .app {
-    padding: 0.75rem;
+    padding: 0;
   }
 
   .container {
     padding: 1rem;
+    max-width: 100%;
+    border-radius: 0;
   }
 
   .header h1 {

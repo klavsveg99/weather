@@ -2,6 +2,7 @@ import type { WeatherData } from '../types/weather'
 import type { Language } from '../utils/i18n'
 import { translations } from '../utils/i18n'
 import { getWeatherIcon } from '../utils/weatherCodes'
+import ForecastDisplay from './ForecastDisplay'
 
 type WeatherDisplayProps = {
   weather: WeatherData
@@ -14,6 +15,16 @@ export default function WeatherDisplay({ weather, language }: WeatherDisplayProp
   const formatTime = (timeString: string) => {
     const date = new Date(timeString)
     return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
+  }
+
+  const formatCurrentTime = (timeString: string) => {
+    try {
+      // Handle ISO format time strings like "2026-01-17T14:30"
+      const date = new Date(timeString + 'Z')
+      return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+    } catch (e) {
+      return 'N/A'
+    }
   }
 
   return (
@@ -56,16 +67,15 @@ export default function WeatherDisplay({ weather, language }: WeatherDisplayProp
             <div className="detail-label">{t.uvIndex}</div>
             <div className="detail-value">{weather.uvIndex}</div>
           </div>
-          <div className="detail-card">
-            <div className="detail-label">{t.sunrise}</div>
-            <div className="detail-value">{formatTime(weather.sunrise)}</div>
-          </div>
+
           <div className="detail-card">
             <div className="detail-label">{t.sunset}</div>
             <div className="detail-value">{formatTime(weather.sunset)}</div>
           </div>
         </div>
       </div>
+
+      <ForecastDisplay forecast={weather.forecast} language={language} />
     </div>
   )
 }
