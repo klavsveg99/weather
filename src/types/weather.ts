@@ -19,13 +19,10 @@ export interface WeatherData {
   windSpeed: number
   weatherCode: number
   weatherDescription: string
-  sunrise: string
   sunset: string
   precipitation: number
   uvIndex: number
   visibility: number
-  currentTime: string
-  dayLength: string
   forecast: ForecastDay[]
 }
 

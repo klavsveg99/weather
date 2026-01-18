@@ -17,16 +17,6 @@ export default function WeatherDisplay({ weather, language }: WeatherDisplayProp
     return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })
   }
 
-  const formatCurrentTime = (timeString: string) => {
-    try {
-      // Handle ISO format time strings like "2026-01-17T14:30"
-      const date = new Date(timeString + 'Z')
-      return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-    } catch (e) {
-      return 'N/A'
-    }
-  }
-
   return (
     <div className="weather-display">
       <div className="location">
