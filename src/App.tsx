@@ -12,7 +12,10 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [searchCity, setSearchCity] = useState('New York')
-  const [language, setLanguage] = useState<Language>('en')
+  const [language, setLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem('language')
+    return (saved === 'en' || saved === 'lv') ? saved : 'en'
+  })
 
   const t = translations[language]
 
@@ -42,7 +45,9 @@ function App() {
   }
 
   const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'lv' : 'en')
+    const newLanguage = language === 'en' ? 'lv' : 'en'
+    setLanguage(newLanguage)
+    localStorage.setItem('language', newLanguage)
   }
 
   return (

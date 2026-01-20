@@ -1,6 +1,6 @@
 .app {
   width: 100%;
-  background: linear-gradient(135deg, #000000 0%, #ffffff 100%);
+  background: #ffffff;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -29,13 +29,13 @@
 .header h1 {
   margin: 0;
   color: #333;
-  text-align: center;
+  text-align: left;
   flex: 1;
 }
 
 .language-toggle {
   padding: 0.75rem 1.5rem;
-  background: #000000;
+  background: #222;
   color: white;
   border: none;
   border-radius: 10px;
@@ -73,7 +73,7 @@
 
 .search-button {
   padding: 0.75rem 1.5rem;
-  background: #000000;
+  background: #222;
   color: white;
   border: none;
   border-radius: 10px;
@@ -150,7 +150,7 @@
   gap: 2rem;
   margin-bottom: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #333333 0%, #666666 100%);
+  background: #333333;
   border-radius: 15px;
   color: white;
   text-align: center;
@@ -240,7 +240,7 @@
 }
 
 .forecast-nav {
-  background: #000000;
+  background: #222;
   color: white;
   border: none;
   border-radius: 50%;
@@ -270,7 +270,7 @@
 }
 
 .forecast-card {
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  background: #f5f5f5;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 1rem;
@@ -444,23 +444,15 @@
 
   .forecast-cards {
     gap: 0.75rem;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .forecast-card {
-    min-width: calc(100% - 40px);
+    min-width: 100%;
     flex-shrink: 0;
     opacity: 0.4;
     padding: 0.6rem;
     transition: opacity 0.3s;
-  }
-
-  .forecast-card:first-child {
-    margin-left: 20px;
-  }
-
-  .forecast-card:last-child {
-    margin-right: 20px;
   }
 
   .forecast-card[class*="forecast-card"] {
@@ -536,6 +528,7 @@
 
   .header h1 {
     font-size: 1.5rem;
+    text-align: center;
   }
 
   .temp {
