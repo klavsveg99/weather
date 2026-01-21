@@ -7,6 +7,8 @@ type SearchBarProps = {
   language: Language
 }
 
+const popularCities = ['New York', 'London', 'Tokyo', 'Riga', 'Paris', 'Berlin', 'Sydney'];
+
 export default function SearchBar({ onSearch, language }: SearchBarProps) {
   const [input, setInput] = useState('')
   const t = translations[language]
@@ -18,6 +20,7 @@ export default function SearchBar({ onSearch, language }: SearchBarProps) {
   }
 
   return (
+    <>
     <form className="search-bar" onSubmit={handleSubmit}>
       <input
         type="text"
@@ -30,5 +33,18 @@ export default function SearchBar({ onSearch, language }: SearchBarProps) {
         {t.searchButton}
       </button>
     </form>
+    <div className="popular-cities">
+      {popularCities.map((city) => (
+        <button
+        className="popular-city-button" 
+        onClick={() => {
+          onSearch(city);
+          setInput(city)
+        }}>
+          {city}
+        </button>
+      ))}
+    </div>
+    </>
   )
 }

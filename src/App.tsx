@@ -11,7 +11,7 @@ function App() {
   const [weather, setWeather] = useState<WeatherData | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [searchCity, setSearchCity] = useState('New York')
+  const [searchCity, setSearchCity] = useState('Riga')
   const [language, setLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem('language')
     return (saved === 'en' || saved === 'lv') ? saved : 'en'
